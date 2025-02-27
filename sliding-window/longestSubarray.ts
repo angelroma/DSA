@@ -24,9 +24,9 @@ function longestSubarray(nums: number[], k: number): number {
 }
 
 // Example usage
-const nums = [1, 2, 3, 4, 5];
-const k = 9;
-console.log(longestSubarray(nums, k)); // Expected output: 3
+// const nums = [1, 2, 3, 4, 5];
+// const k = 9;
+console.log(longestSubarray([1, 2, 3, 4, 5], 9)); // Expected output: 3
 
 /*
   Example Walkthrough:
