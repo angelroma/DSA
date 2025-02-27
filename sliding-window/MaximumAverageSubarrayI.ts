@@ -62,11 +62,6 @@ function optimalFindMaxAverage(nums: number[], k: number): number {
   // Slide the window
   for (let i = k; i < nums.length; i++) {
     currSum += nums[i] - nums[i - k]; // Slide window by removing left and adding right
-    console.log(
-      `nums[i](${nums[i]}) - nums[i - k](${nums[i - k]})`,
-      nums[i] - nums[i - k]
-    );
-    console.log("currSum", currSum);
     maxSum = Math.max(maxSum, currSum);
   }
 
