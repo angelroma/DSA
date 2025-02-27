@@ -24,7 +24,7 @@ function findMaxAverage(nums: number[], k: number): number {
   let maxAverage = 0;
   let curr = 0;
   let step = 1;
-  for (let right = left; right < nums.length; right++) {
+  for (let right = 0; right < nums.length; right++) {
     curr += nums[right];
     console.log(`nums[right(${right})]`, nums[right], "==> ", curr);
     step++;
@@ -49,5 +49,29 @@ function findMaxAverage(nums: number[], k: number): number {
   return maxAverage;
 }
 
+function optimalFindMaxAverage(nums: number[], k: number): number {
+  let currSum = 0;
+
+  // Compute initial window sum
+  for (let i = 0; i < k; i++) {
+    currSum += nums[i];
+  }
+
+  let maxSum = currSum;
+
+  // Slide the window
+  for (let i = k; i < nums.length; i++) {
+    currSum += nums[i] - nums[i - k]; // Slide window by removing left and adding right
+    console.log(
+      `nums[i](${nums[i]}) - nums[i - k](${nums[i - k]})`,
+      nums[i] - nums[i - k]
+    );
+    console.log("currSum", currSum);
+    maxSum = Math.max(maxSum, currSum);
+  }
+
+  return maxSum / k;
+}
+
 // console.log(findMaxAverage([1, 12, -5, -6, 50, 3], 4).toPrecision(7));
-console.log(findMaxAverage([-1], 1).toPrecision(7));
+console.log(optimalFindMaxAverage([1, 12, -5, -6, 50, 3], 4).toPrecision(7));
